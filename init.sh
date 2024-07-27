@@ -24,6 +24,16 @@ function install_docker {
     
 }
 
+function folder_exists() {
+    local folder_path="$1"
+    if [ -d "$folder_path" ]; then
+        return 0  # Folder exists
+    else
+        return 1  # Folder does not exist
+    fi
+}
+
+
 function network_exists() {
     local network_name="$1"
     if docker network ls | grep -w "$network_name" > /dev/null; then
@@ -59,6 +69,18 @@ function main {
         echo "Docker installation not found, installing now..."
         install_docker        
     fi
+
+    # Function to check if a folder exists
+  
+    # Example usage of the function in an if statement
+    FOLDER_PATH="/services/traefik"
+
+    if folder_exists "$FOLDER_PATH"; then
+       echo "Traefik already exists" 
+    else
+        setup_traefik
+    fi
+
 }
 
 
