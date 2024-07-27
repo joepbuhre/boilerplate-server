@@ -1,0 +1,14 @@
+http:
+  middlewares:
+    redirectHttps:
+      redirectscheme:
+        scheme: https
+    # authelia:
+    #   forwardAuth:
+    #     address: "http://authelia:9091/api/verify?rd=https://<domain here>"
+    #     trustForwardHeader: true
+    #     authResponseHeaders:
+    #       - Remote-User
+    #       - Remote-Groups
+    #       - Remote-Name
+    #       - Remote-Email
